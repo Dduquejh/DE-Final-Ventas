@@ -1,1 +1,34 @@
+# Credenciales y configuración local (no entregar)
 .env
+.env.*
+!.env.example
+
+# Artefactos de dbt
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+dbt/.user.yml
+logs/
+
+# Base de datos local generada (DuckDB)
+*.duckdb
+*.duckdb.wal
+
+# Airflow
+airflow/logs/
+airflow/*.pid
+airflow/*.cfg.bak
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

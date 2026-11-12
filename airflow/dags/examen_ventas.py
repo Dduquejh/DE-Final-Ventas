@@ -14,8 +14,16 @@ with DAG(
     default_args={"retries": 0},
     tags=["examen"],
 ) as dag:
+    comprobar_freshness = PythonOperator(
+        task_id="comprobar_freshness",
+        python_callable=run_dbt,
+        op_args=[["source", "freshness"]],
+    )
+
     construir_resumen = PythonOperator(
         task_id="construir_resumen",
         python_callable=run_dbt,
         op_args=[["build"]],
     )
+
+    comprobar_freshness >> construir_resumen
